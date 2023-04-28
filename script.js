@@ -38,8 +38,22 @@ let personalMovieDB = {
     },
     writeYourGenres: function() {
         for (let i = 1; i <= 3; i++) {
-            personalMovieDB.genres[i - 1] = prompt(`Your favourite genre number ${i}`);
+            let genre = prompt(`Your favourite genre number ${i}`);
+
+            if (genre == '' || genre == null){
+                console.log('Empty space');
+                i--;
+            } else {
+                personalMovieDB.genres[i - 1] = genre;
+                personalMovieDB.genres.sort();
+            }
+
         }
+
+        personalMovieDB.genres.forEach((item,i) => {
+            console.log(`Favourite genre number ${i + 1} - ${item} `)
+        });
+
     },
    /* showMyDB: function(hidden){
         if (!hidden) {
@@ -53,7 +67,7 @@ let personalMovieDB = {
             personalMovieDB.privat = true;
         }
     },
-    
+
     
 
     
